@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package order.v1;
+
+option go_package = "github.com/Ekvo/ecom-grpc-apis/order/v1";
+
+service OrderService {
+  rpc CreateOrder(CreateOrderRequest) returns (CreateOrderResponse);
+
+  rpc GetOrder(GetOrderRequest) returns (GetOrderResponse);
+}
+
+message Order{
+  string id =1;
+  string user_id =2;
+  string product =3;
+  int32 quantiy =4;
+  double unit_price =5;
+}
+
+message CreateOrderRequest{
+  string product =1;
+  string quantity =2;
+}
+
+message CreateOrderResponse{
+  Order order =1;
+}
+
+message GetOrderRequest{
+  string id =1;
+}
+
+message GetOrderResponse{
+  Order order =1;
+}
